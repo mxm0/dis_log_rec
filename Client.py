@@ -13,7 +13,7 @@ class Client:
       while(True):
         manager = Manager()
         taid = manager.beginTransaction()
-        print("Client", self.client_n, "started transaction.")
+        print("Client", self.client_n, "started new transaction number:.", taid)
 
         # Build random string as data and write it
         for pageid in self.pageids:
@@ -22,5 +22,5 @@ class Client:
 
         # Commit transaction
         manager.commit(taid)
-        print("Client", self.client_n, "transaction commited.")
+        print("Client", self.client_n, "commited transaction number:", taid)
         time.sleep(3)

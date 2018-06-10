@@ -8,17 +8,21 @@ class Singleton(type):
 
 # Methods needed beginTransaction(), commit(int taid), write(int taid, int pageid, String data)
 class Manager(metaclass=Singleton):
-    def __init__(self, val):
+    def __init__(self):
         # Initialize something if we need to
-
-    def beginTransaction(self,):
-        pass
-
-    def write(self, int taid, int pageid, String data):
-        pass
+      pass
     
-    def commit(self, int taid):
-        pass
+    def __str__(self):
+      return self.val
+
+    def beginTransaction(self):
+      return 1
+
+    def write(self, taid, pageid, data):
+      pass
+    
+    def commit(self, taid):
+      pass
 
 
 

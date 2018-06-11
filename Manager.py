@@ -35,12 +35,15 @@ class Manager(object):
 
     def transaction_logger(self, file_name):
         l = logging.getLogger(file_name)
-        l.setLevel(logging.DEBUG)
+
         fileHandler = logging.FileHandler(file_name, mode='w+')
         formatter = logging.Formatter('%(message)s')
-        fileHandler.setFormatter(formatter)
-        l.addHandler(fileHandler)
         streamHandler = logging.StreamHandler()
+
         streamHandler.setFormatter(formatter)
+        fileHandler.setFormatter(formatter)
+
+        l.setLevel(logging.DEBUG)
+        l.addHandler(fileHandler)
         l.addHandler(streamHandler)
         return l

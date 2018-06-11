@@ -18,9 +18,10 @@ class Client:
                             stream=sys.stdout,
                             format='%(relativeCreated)6d %(threadName)s %(message)s')
 
-        writes = {page_id: random.randint(1, 10) for page_id in page_ids}
+        writes = {page_id: random.randint(1, 5) for page_id in page_ids}
         writes = [page_id for page_id, n in writes.items() for _ in itertools.repeat(page_id, n)]
         random.shuffle(writes)
+
         logging.debug('page write order {0}'.format(writes))
         self.writes = writes
 
@@ -35,4 +36,4 @@ class Client:
         manager.commit(taid)
 
     def data(self, bits, CHAR_SET = string.ascii_uppercase):
-        return ''.join([random.choice(CHAR_SET) for _ in range(bits)])
+        return ''.join(random.choice(CHAR_SET) for _ in range(bits))

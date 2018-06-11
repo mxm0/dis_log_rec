@@ -10,8 +10,9 @@ import itertools
 
 from Manager import Manager
 
+
 class Client:
-    def __init__(self, page_ids, logfile='Client.log'):
+    def __init__(self, page_ids, logfile='log'):
         logging.basicConfig(filename=logfile,
                             filemode='w+',
                             level=logging.DEBUG,
@@ -22,12 +23,12 @@ class Client:
         writes = [page_id for page_id, n in writes.items() for _ in itertools.repeat(page_id, n)]
         random.shuffle(writes)
 
-        logging.debug('page write order {0}'.format(writes))
+        logging.debug('page write order: {0}'.format(writes))
         self.writes = writes
 
     def execute(self):
         manager = Manager()
-        taid = manager.beginTransaction()
+        taid = manager.begin_transaction()
 
         for page_id in self.writes:
             manager.write(taid, page_id, self.data(10))

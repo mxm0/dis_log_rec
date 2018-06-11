@@ -1,4 +1,5 @@
 import uuid
+import time
 import logging
 import hashlib
 
@@ -28,7 +29,8 @@ class Manager(object):
         return taid
 
     def write(self, taid, page_id, data):
-        lsn = hashlib.sha256(str([taid, page_id, data]))
+        lsn = hashlib.sha256(str(time.time()))
+        #lsn = hashlib.sha256(str([taid, page_id, data]))
 
         logging.debug('appending transaction for taid={taid}: '
                       '{pending_transactions}'.format(pending_transactions=self.pending_transactions,

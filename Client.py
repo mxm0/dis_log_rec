@@ -1,26 +1,38 @@
 # Client class implementation
 # The Client repeatedly execute transactions on the manager
 
+import sys
+import time
+import random
+import string
+import logging
+import itertools
+
 from Manager import Manager
-import time, random, string
 
 class Client:
-  def __init__(self, client_n, pageids):
-      self.client_n = client_n
-      self.pageids = pageids
-  
-  def execute(self):
-      while(True):
+    def __init__(self, page_ids, logfile='Client.log'):
+        logging.basicConfig(filename=logfile,
+                            filemode='w+',
+                            level=logging.DEBUG,
+                            stream=sys.stdout,
+                            format='%(relativeCreated)6d %(threadName)s %(message)s')
+
+        writes = {page_id: random.randint(1, 10) for page_id in page_ids}
+        writes = [page_id for page_id, n in writes.items() for _ in itertools.repeat(page_id, n)]
+        random.shuffle(writes)
+        logging.debug('page write order {0}'.format(writes))
+        self.writes = writes
+
+    def execute(self):
         manager = Manager()
         taid = manager.beginTransaction()
-        print("Client", self.client_n, "started new transaction number:.", taid)
 
-        # Build random string as data and write it
-        for pageid in self.pageids:
-            data = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
-            manager.write(taid, pageid, data)
+        for page_id in self.writes:
+            manager.write(taid, page_id, self.data(10))
+            time.sleep(3)
 
-        # Commit transaction
         manager.commit(taid)
-        print("Client", self.client_n, "commited transaction number:", taid)
-        time.sleep(3)
+
+    def data(self, bits, CHAR_SET = string.ascii_uppercase):
+        return ''.join([random.choice(CHAR_SET) for _ in range(bits)])

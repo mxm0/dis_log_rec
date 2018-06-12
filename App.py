@@ -7,7 +7,7 @@ from Client import Client
 
 n_pages = 2
 n_workers = 3
-
+lock = threading.Lock()
 
 def worker():
     pages = [str(uuid.uuid4()).split('-')[0] for _ in range(random.randint(1, n_pages))]

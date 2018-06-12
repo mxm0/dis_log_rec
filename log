@@ -1,0 +1,21 @@
+     2 Thread-1 page write order: ['3210326d', '3210326d']
+     3 Thread-2 page write order: ['fb2396fa', '6c65e914', 'fb2396fa', 'fb2396fa', '6c65e914', 'fb2396fa', 'fb2396fa']
+     3 Thread-3 page write order: ['9f588a07', 'bdcf0b05', '9f588a07', '9f588a07', 'bdcf0b05', '9f588a07', 'bdcf0b05', '9f588a07']
+     4 Thread-1 appending transaction for taid=1fee64a2-fa4b-424b-9f10-576fb9f7d475: {UUID('1fee64a2-fa4b-424b-9f10-576fb9f7d475'): {}}
+     4 Thread-1 1, 1fee64a2-fa4b-424b-9f10-576fb9f7d475, 3210326d, BXFZCROSZW
+     5 Thread-2 appending transaction for taid=311a5d5c-bd8a-4cb3-8025-43640a011ebc: {UUID('1fee64a2-fa4b-424b-9f10-576fb9f7d475'): {'3210326d': [{'lsn': 1, 'data': 'BXFZCROSZW'}]}, UUID('fb651af1-e03b-41eb-9f7a-730174ef593f'): {}, UUID('311a5d5c-bd8a-4cb3-8025-43640a011ebc'): {}}
+     5 Thread-2 2, 311a5d5c-bd8a-4cb3-8025-43640a011ebc, fb2396fa, ESPJYDZLTC
+     5 Thread-3 appending transaction for taid=fb651af1-e03b-41eb-9f7a-730174ef593f: {UUID('1fee64a2-fa4b-424b-9f10-576fb9f7d475'): {'3210326d': [{'lsn': 1, 'data': 'BXFZCROSZW'}]}, UUID('fb651af1-e03b-41eb-9f7a-730174ef593f'): {}, UUID('311a5d5c-bd8a-4cb3-8025-43640a011ebc'): {'fb2396fa': [{'lsn': 2, 'data': 'ESPJYDZLTC'}]}}
+     5 Thread-3 3, fb651af1-e03b-41eb-9f7a-730174ef593f, 9f588a07, QDRDXFLWLW
+  3006 Thread-1 appending transaction for taid=1fee64a2-fa4b-424b-9f10-576fb9f7d475: {UUID('1fee64a2-fa4b-424b-9f10-576fb9f7d475'): {'3210326d': [{'lsn': 1, 'data': 'BXFZCROSZW'}]}, UUID('fb651af1-e03b-41eb-9f7a-730174ef593f'): {'9f588a07': [{'lsn': 3, 'data': 'QDRDXFLWLW'}]}, UUID('311a5d5c-bd8a-4cb3-8025-43640a011ebc'): {'fb2396fa': [{'lsn': 2, 'data': 'ESPJYDZLTC'}]}}
+  3006 Thread-1 4, 1fee64a2-fa4b-424b-9f10-576fb9f7d475, 3210326d, CEFPJOKQAT
+  3006 Thread-2 appending transaction for taid=311a5d5c-bd8a-4cb3-8025-43640a011ebc: {UUID('1fee64a2-fa4b-424b-9f10-576fb9f7d475'): {'3210326d': [{'lsn': 1, 'data': 'BXFZCROSZW'}, {'lsn': 4, 'data': 'CEFPJOKQAT'}]}, UUID('fb651af1-e03b-41eb-9f7a-730174ef593f'): {'9f588a07': [{'lsn': 3, 'data': 'QDRDXFLWLW'}]}, UUID('311a5d5c-bd8a-4cb3-8025-43640a011ebc'): {'fb2396fa': [{'lsn': 2, 'data': 'ESPJYDZLTC'}]}}
+  3007 Thread-2 5, 311a5d5c-bd8a-4cb3-8025-43640a011ebc, 6c65e914, TFJPICYTZA
+  3007 Thread-3 appending transaction for taid=fb651af1-e03b-41eb-9f7a-730174ef593f: {UUID('1fee64a2-fa4b-424b-9f10-576fb9f7d475'): {'3210326d': [{'lsn': 1, 'data': 'BXFZCROSZW'}, {'lsn': 4, 'data': 'CEFPJOKQAT'}]}, UUID('fb651af1-e03b-41eb-9f7a-730174ef593f'): {'9f588a07': [{'lsn': 3, 'data': 'QDRDXFLWLW'}]}, UUID('311a5d5c-bd8a-4cb3-8025-43640a011ebc'): {'6c65e914': [{'lsn': 5, 'data': 'TFJPICYTZA'}], 'fb2396fa': [{'lsn': 2, 'data': 'ESPJYDZLTC'}]}}
+  3007 Thread-3 6, fb651af1-e03b-41eb-9f7a-730174ef593f, bdcf0b05, ZNSILDATKB
+  6009 Thread-2 appending transaction for taid=311a5d5c-bd8a-4cb3-8025-43640a011ebc: {UUID('1fee64a2-fa4b-424b-9f10-576fb9f7d475'): {'3210326d': [{'lsn': 1, 'data': 'BXFZCROSZW'}, {'lsn': 4, 'data': 'CEFPJOKQAT'}]}, UUID('fb651af1-e03b-41eb-9f7a-730174ef593f'): {'9f588a07': [{'lsn': 3, 'data': 'QDRDXFLWLW'}], 'bdcf0b05': [{'lsn': 6, 'data': 'ZNSILDATKB'}]}, UUID('311a5d5c-bd8a-4cb3-8025-43640a011ebc'): {'6c65e914': [{'lsn': 5, 'data': 'TFJPICYTZA'}], 'fb2396fa': [{'lsn': 2, 'data': 'ESPJYDZLTC'}]}}
+  6009 Thread-2 7, 311a5d5c-bd8a-4cb3-8025-43640a011ebc, fb2396fa, AQVUSXCDYT
+  6009 Thread-2 4, 3210326d, CEFPJOKQAT
+  6010 Thread-2 pending transactions after commit: {UUID('fb651af1-e03b-41eb-9f7a-730174ef593f'): {'9f588a07': [{'lsn': 3, 'data': 'QDRDXFLWLW'}], 'bdcf0b05': [{'lsn': 6, 'data': 'ZNSILDATKB'}]}, UUID('311a5d5c-bd8a-4cb3-8025-43640a011ebc'): {'6c65e914': [{'lsn': 5, 'data': 'TFJPICYTZA'}], 'fb2396fa': [{'lsn': 2, 'data': 'ESPJYDZLTC'}, {'lsn': 7, 'data': 'AQVUSXCDYT'}]}}
+  6010 Thread-3 appending transaction for taid=fb651af1-e03b-41eb-9f7a-730174ef593f: {UUID('fb651af1-e03b-41eb-9f7a-730174ef593f'): {'9f588a07': [{'lsn': 3, 'data': 'QDRDXFLWLW'}], 'bdcf0b05': [{'lsn': 6, 'data': 'ZNSILDATKB'}]}, UUID('311a5d5c-bd8a-4cb3-8025-43640a011ebc'): {'6c65e914': [{'lsn': 5, 'data': 'TFJPICYTZA'}], 'fb2396fa': [{'lsn': 2, 'data': 'ESPJYDZLTC'}, {'lsn': 7, 'data': 'AQVUSXCDYT'}]}}
+  6010 Thread-3 8, fb651af1-e03b-41eb-9f7a-730174ef593f, 9f588a07, JGKEXBBUXR

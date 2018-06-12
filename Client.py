@@ -22,7 +22,7 @@ class Client:
         writes = {page_id: random.randint(1, 5) for page_id in page_ids}
         writes = [page_id for page_id, n in writes.items() for _ in itertools.repeat(page_id, n)]
         random.shuffle(writes)
-
+        
         logging.debug('page write order: {0}'.format(writes))
         self.writes = writes
 
